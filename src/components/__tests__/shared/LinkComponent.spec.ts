@@ -39,7 +39,7 @@ describe('Link', () => {
   })
   it('adds class based on prop received', () => {
     const wrapper = mount(Link, {
-      props: { title: 'Hello', isActive: true, path: '/test', className: 'test' },
+      props: { title: 'Hello', isActive: true, path: '/test', class: 'test' },
       global: {
         plugins: [router]
       }

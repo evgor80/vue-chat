@@ -57,7 +57,7 @@ const isButtonActive = computed(() => {
 </script>
 
 <template>
-    <form className="form" @submit.prevent="handleSubmit">
+    <form class="form" @submit.prevent="handleSubmit">
         <FormSwitch :isChecked="isChecked" @changed="handleChange" />
         <FormInputContainer title="Название чата" name="name" :injectionKey="nameKey" :error="nameError" />
         <Transition>

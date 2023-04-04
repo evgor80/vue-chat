@@ -14,7 +14,7 @@ const inputType = computed(() => props.isPasswordField ? "password" : "text")
 </script>
 
 <template>
-    <input :name="name" :id="name" className="form__input__field" :type="inputType" required :value="value"
+    <input :name="name" :id="name" class="form__input__field" :type="inputType" required :value="value"
         @input="setInput(($event.target as HTMLInputElement).value)" />
 </template>
 

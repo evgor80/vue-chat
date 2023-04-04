@@ -6,6 +6,6 @@ const path = useRoute().path
 </script>
 
 <template>
-    <Link title="Вход" path="/login" :isActive="path === '/login'" className="button--no-shadow" />
-    <Link title="Регистрация" path="/signup" :isActive="path !== '/login'" className="button--no-shadow" />
+    <Link title="Вход" path="/login" :isActive="path === '/login'" class="button--no-shadow" />
+    <Link title="Регистрация" path="/signup" :isActive="path !== '/login'" class="button--no-shadow" />
 </template>

@@ -3,12 +3,12 @@ defineProps<{ isChecked: boolean }>()
 </script>
 
 <template>
-    <div className="form__switch__wrapper">
+    <div class="form__switch__wrapper">
         <span aria-hidden="true">Общедоступный</span>
-        <label className="form__switch" htmlFor="checkbox">
+        <label class="form__switch" htmlFor="checkbox">
             <input name="checkbox" id="checkbox" type="checkbox" aria-label="Приватный чат" :value="isChecked"
                 @change="$emit('changed')" />
-            <span className="form__switch__slider form__switch__slider--round"></span>
+            <span class="form__switch__slider form__switch__slider--round"></span>
         </label>
         <span aria-hidden="true">Приватный</span>
     </div>

@@ -3,7 +3,7 @@ defineProps<{ title: string }>()
 </script>
 
 <template>
-    <h1 className="card__title">{{ title }}</h1>
+    <h1 class="card__title">{{ title }}</h1>
 </template>
 
 <style lang="scss">

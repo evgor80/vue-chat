@@ -47,7 +47,7 @@ watch(response, (r) => {
 </script>
 
 <template>
-    <form className="form" @submit.prevent="handleSubmit">
+    <form class="form" @submit.prevent="handleSubmit">
         <FormInputContainer title="Имя пользователя" name="name" :injectionKey="nameKey" :error="nameError" />
         <FormInputContainer title="Пароль" name="password" :injectionKey="passwordKey" :error="passwordError" />
         <FormPasswordGeneratorButton @clicked="handlePassworgGeneratorClick" />

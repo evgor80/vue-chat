@@ -1,5 +1,5 @@
 <template>
-    <button @click="$emit('clicked')" type="button" className="form__password-generator-button">
+    <button @click="$emit('clicked')" type="button" class="form__password-generator-button">
         Сгенерировать пароль автоматически
     </button>
 </template>

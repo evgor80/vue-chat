@@ -1,3 +1,5 @@
 export const nameKey = Symbol()
 export const passwordKey = Symbol()
 export const confirmPasswordKey = Symbol()
+export const sortKey = Symbol()
+export const searchKey = Symbol()

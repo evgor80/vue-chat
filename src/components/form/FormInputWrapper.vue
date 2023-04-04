@@ -1,5 +1,5 @@
 <template>
-    <div className="form__input">
+    <div class="form__input">
         <slot />
     </div>
 </template>

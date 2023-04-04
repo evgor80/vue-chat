@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import Card from "@/components/card/CardComponent.vue"
+import HomeContainer from "@/containers/HomeContainer.vue"
 </script>
 
 <template>
-  <main>
-    <div>Hello World!!!</div>
-  </main>
+  <Card isFullHeight>
+    <HomeContainer />
+  </Card>
 </template>
