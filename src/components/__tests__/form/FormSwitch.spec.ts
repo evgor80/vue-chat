@@ -10,7 +10,7 @@ describe('FormSwitch', () => {
     expect(switchEl.element.value).toBeTruthy()
   })
   it('emits event on click', () => {
-    const wrapper = mount(FormSwitch)
+    const wrapper = mount(FormSwitch, { props: { isChecked: true } })
     const switchEl = wrapper.get('input')
     switchEl.trigger('click')
     expect(wrapper.emitted().click).toHaveLength(1)

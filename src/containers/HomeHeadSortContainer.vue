@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import HomeHeadSortButton from "@/components/home-head-sort/HomeHeadSortButton.vue"
 import HomeHeadSortList from "@/components/home-head-sort/HomeHeadSortList.vue"
 import { useClickOutside } from '@/composables/useClickOutside';
-import  useBlurHandle  from '@/composables/useBlurHandle';
+import useBlurHandle from '@/composables/useBlurHandle';
 
 const isDisplayed = ref(false)
 const divRef = ref()
@@ -16,7 +16,7 @@ useBlurHandle(divRef, closeSortWindow)
 
 <template>
     <div ref="divRef">
-        <HomeHeadSortButton @clicked="setIsDisplayed" />
+        <HomeHeadSortButton name="head" @clicked="setIsDisplayed" />
         <Transition>
             <HomeHeadSortList v-if="isDisplayed" @clicked="setIsDisplayed" />
         </Transition>
@@ -24,15 +24,13 @@ useBlurHandle(divRef, closeSortWindow)
 </template>
 
 <style lang="scss" scoped>
-.v-enter-active,
-.v-leave-active {
+.head-enter-active,
+.head-leave-active {
     transition: all 0.6s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
+.head-enter-from,
+.head-leave-to {
     opacity: 0;
-    height: 0;
-
 }
 </style>

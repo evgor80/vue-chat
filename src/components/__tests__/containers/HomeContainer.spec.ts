@@ -3,7 +3,7 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { describe, expect, it } from 'vitest'
 import HomeContainer from '@/containers/HomeContainer.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import router from '@/router'
 
 const rooms = [
   {
@@ -38,10 +38,6 @@ const rooms = [
 describe('MainContainer', () => {
   const mock = new MockAdapter(axios)
   mock.onGet('http://localhost:3000/api/v1/rooms').reply(200, { rooms })
-  const router = createRouter({
-    history: createWebHistory(),
-    routes: []
-  })
 
   it('sorts chat rooms', async () => {
     const wrapper = mount(HomeContainer, {

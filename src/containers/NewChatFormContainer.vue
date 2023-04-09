@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, provide, ref, watch } from 'vue';
 import { useRegistrationForm } from "@/composables/useRegistrationForm"
 import router from '@/router';
 import Button from "@/components/shared/ButtonComponent.vue"
@@ -16,6 +16,9 @@ const {
     password,
     confirmPassword,
     response,
+    handlleNameChange,
+    handllePasswordChange,
+    handlleConfirmPasswordChange,
     handlePassworgGeneratorClick,
     register,
     nameError,
@@ -54,6 +57,12 @@ const isButtonActive = computed(() => {
     }
     return name.value.length > 2 && !nameError.value && !isLoading.value
 })
+
+provide(nameKey, [name, handlleNameChange])
+provide(passwordKey, [password, handllePasswordChange])
+provide(confirmPasswordKey, [confirmPassword, handlleConfirmPasswordChange])
+
+
 </script>
 
 <template>

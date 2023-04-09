@@ -5,7 +5,10 @@ import axios from 'axios'
 import { flushPromises } from '@vue/test-utils'
 
 describe('useRegistrationForm', () => {
+  const mock = new MockAdapter(axios)
   it('changes values respectively', () => {
+    mock.onGet().reply(200)
+
     const {
       name,
       password,
@@ -29,6 +32,8 @@ describe('useRegistrationForm', () => {
     expect(password.value === confirmPassword.value).toBeTruthy()
   })
   it('generates errors based on field values', () => {
+      mock.onGet().reply(200)
+
     const {
       handlleNameChange,
       handllePasswordChange,

@@ -1,7 +1,6 @@
 import generatePassword from '@/utils/generatePassword'
-import { computed, ref, watch, provide } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useAxios } from './useAxios'
-import { nameKey, passwordKey, confirmPasswordKey } from '@/keys'
 
 export function useRegistrationForm(type: 'user' | 'room') {
   const name = ref('')
@@ -19,15 +18,15 @@ export function useRegistrationForm(type: 'user' | 'room') {
   })
 
   function handlleNameChange(n: string) {
-    name.value = n
+    name.value = n.trim()
   }
 
   function handlleConfirmPasswordChange(p: string) {
-    confirmPassword.value = p
+    confirmPassword.value = p.trim()
   }
 
   function handllePasswordChange(p: string) {
-    password.value = p
+    password.value = p.trim()
   }
 
   function handlePassworgGeneratorClick() {
@@ -64,10 +63,6 @@ export function useRegistrationForm(type: 'user' | 'room') {
   const confirmPasswordError = computed(() =>
     confirmPassword.value.length > 0 && !arePasswordsMatch.value ? 'Пароли не совпадают' : ''
   )
-
-  provide(nameKey, [name, handlleNameChange])
-  provide(passwordKey, [password, handllePasswordChange])
-  provide(confirmPasswordKey, [confirmPassword, handlleConfirmPasswordChange])
 
   return {
     name,

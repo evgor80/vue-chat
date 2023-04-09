@@ -4,7 +4,7 @@ import Button from "@/components/shared/ButtonComponent.vue"
 import FormInputContainer from "@/containers/FormInputContainer.vue"
 import FormPasswordGeneratorButton from "@/components/form/FormPasswordGeneratorButton.vue"
 import { nameKey, passwordKey, confirmPasswordKey } from "@/keys"
-import { computed, watch } from "vue";
+import { computed, provide, watch } from "vue";
 import router from "@/router"
 
 const {
@@ -12,6 +12,9 @@ const {
     password,
     confirmPassword,
     response,
+    handlleNameChange,
+    handllePasswordChange,
+    handlleConfirmPasswordChange,
     handlePassworgGeneratorClick,
     register,
     nameError,
@@ -43,6 +46,12 @@ watch(response, (r) => {
         router.push("/");
     }
 })
+
+provide(nameKey, [name, handlleNameChange])
+provide(passwordKey, [password, handllePasswordChange])
+provide(confirmPasswordKey, [confirmPassword, handlleConfirmPasswordChange])
+
+
 
 </script>
 

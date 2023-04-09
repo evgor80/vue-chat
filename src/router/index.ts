@@ -4,6 +4,7 @@ import EnterView from '@/views/EnterView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SignupView from '@/views/SignupView.vue'
 import NewChatView from '@/views/NewChatView.vue'
+import RoomView from '@/views/RoomView.vue'
 import type { RouteLocationNormalized } from 'vue-router'
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/new-chat',
       name: 'new-chat',
       component: NewChatView
+    },
+    {
+      path: '/room/:slug',
+      name: 'room',
+      component: RoomView
     }
   ]
 })

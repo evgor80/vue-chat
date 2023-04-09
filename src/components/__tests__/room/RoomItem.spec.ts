@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import { createRouter, createWebHistory } from 'vue-router'
 import RoomItem from '@/components/room/RoomItem.vue'
+import router from '@/router'
 
 describe('RoomItem', () => {
   const room = {
@@ -13,11 +13,6 @@ describe('RoomItem', () => {
     private: true,
     createdAt: 'today'
   }
-
-  const router = createRouter({
-    history: createWebHistory(),
-    routes: []
-  })
 
   const wrapper = mount(RoomItem, {
     props: { room },

@@ -1,26 +1,14 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Link from '@/components/shared/LinkComponent.vue'
-import { createRouter, createWebHistory, type Router } from 'vue-router'
+import router from '@/router'
 
-let router: Router
-beforeEach(() => {
-  const routes = [
-    {
-      path: '/',
-      component: Link
-    }
-  ]
-  router = createRouter({
-    history: createWebHistory(),
-    routes
-  })
-})
+
 
 describe('Link', () => {
   it('displays title based on prop received', () => {
     const wrapper = mount(Link, {
-      props: { title: 'Hello', isActive: true, path: '/test' },
+      props: { title: 'Hello', isActive: true, path: '/login' },
       global: {
         plugins: [router]
       }
@@ -30,16 +18,16 @@ describe('Link', () => {
   })
   it('render link based on prop received', () => {
     const wrapper = mount(Link, {
-      props: { title: 'Hello', path: '/test' },
+      props: { title: 'Hello', path: '/login' },
       global: {
         plugins: [router]
       }
     })
-    expect(wrapper.get('a').attributes('href')).toBe('/test')
+    expect(wrapper.get('a').attributes('href')).toBe('/login')
   })
   it('adds class based on prop received', () => {
     const wrapper = mount(Link, {
-      props: { title: 'Hello', isActive: true, path: '/test', class: 'test' },
+      props: { title: 'Hello', isActive: true, path: '/login', class: 'test' },
       global: {
         plugins: [router]
       }

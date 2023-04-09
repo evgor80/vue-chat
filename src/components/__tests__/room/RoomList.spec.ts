@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import RoomList from '@/components/room/RoomList.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import router from '@/router'
 
 describe('RoomList', () => {
   it('displays message about network error', () => {
-    const wrapper = mount(RoomList)
+    const wrapper = mount(RoomList, { props: { isLoading: false } })
     expect(wrapper.html()).toContain('Не удалось получить данные с сервера')
   })
   it('displays message if array of rooms is empty', () => {
@@ -29,10 +29,6 @@ describe('RoomList', () => {
     const list = Array(4)
       .fill('')
       .map(() => ({ ...room, id: Math.random().toString() }))
-    const router = createRouter({
-      history: createWebHistory(),
-      routes: []
-    })
 
     const wrapper = mount(RoomList, {
       props: { list, isLoading: false },

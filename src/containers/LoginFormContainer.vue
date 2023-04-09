@@ -9,12 +9,12 @@ import router from "@/router";
 
 const name = ref("")
 const setName = (n: string) => {
-    name.value = n;
+    name.value = n.trim();
     if (error.value) error.value = ""
 }
 const password = ref("")
 const setPassword = (p: string) => {
-    password.value = p;
+    password.value = p.trim();
     if (error.value) error.value = ""
 }
 const error = ref("")
