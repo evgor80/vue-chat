@@ -6,6 +6,7 @@ import FormPasswordGeneratorButton from "@/components/form/FormPasswordGenerator
 import { nameKey, passwordKey, confirmPasswordKey } from "@/keys"
 import { computed, provide, watch } from "vue";
 import router from "@/router"
+import { useNotificationStore } from "@/stores/notification"
 
 const {
     name,
@@ -22,6 +23,9 @@ const {
     confirmPasswordError,
     isLoading
 } = useRegistrationForm("user");
+
+const { addNotification } = useNotificationStore()
+
 
 const isButtonActive = computed(() => name.value.length > 2 &&
     password.value.length > 7 &&
@@ -43,6 +47,7 @@ watch(response, (r) => {
     if (r?.token) {
         localStorage.setItem("token", r.token);
         localStorage.setItem("user", r.user.username);
+        addNotification("Вы зарегистрированы", 'info')
         router.push("/");
     }
 })

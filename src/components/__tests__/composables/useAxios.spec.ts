@@ -2,8 +2,10 @@ import { useAxios } from '@/composables/useAxios'
 import { describe, expect, it } from 'vitest'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
+import { setActivePinia, createPinia } from 'pinia'
 
 describe('useAxios', () => {
+  setActivePinia(createPinia())
   const mock = new MockAdapter(axios)
   it('makes requests to server and changes response respectively', async () => {
     const { response, makeApiCall } = useAxios()

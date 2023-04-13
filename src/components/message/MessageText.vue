@@ -24,7 +24,7 @@ const className = computed(() => props.isAuthor ? " msg__text--mine" : "msg__tex
     padding: 0.5rem .875rem;
     position: relative;
     word-wrap: break-word;
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
     color: #fff;
@@ -66,6 +66,9 @@ const className = computed(() => props.isAuthor ? " msg__text--mine" : "msg__tex
     }
 
     &--their {
+        align-self: flex-start;
+
+
         &:before {
             border-bottom-right-radius: 0.8rem 0.7rem;
             border-left: 1rem solid #6a8e3e;

@@ -9,7 +9,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), { isFullHeight: false, isFullWidth: false })
 
 const widthClass = computed(() => props.isFullWidth ? "offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 offset-md-1 col-md-10 offset-sm-1 col-sm-10"
-    : "offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-sm-2 col-sm-8")
+    : "offset-xl-4 col-xl-4 offset-lg-3 col-lg-6 offset-md-3 col-md-6 offset-sm-2 col-sm-8")
 
 const heightClass = computed(() => props.isFullHeight ? "card__body--full-height" : "")
 

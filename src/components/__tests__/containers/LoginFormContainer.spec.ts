@@ -3,8 +3,10 @@ import { flushPromises, mount } from '@vue/test-utils'
 import LoginFormContainer from '@/containers/LoginFormContainer.vue'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
+import { setActivePinia, createPinia } from 'pinia'
 
 describe('LoginFormContainer', () => {
+  setActivePinia(createPinia())
   const mock = new MockAdapter(axios)
   mock
     .onPost('http://localhost:3000/api/v1/users/login')

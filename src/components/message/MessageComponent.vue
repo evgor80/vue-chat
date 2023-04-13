@@ -15,14 +15,16 @@ const user = localStorage.user;
 const isOnline = computed(() => props.members ? props.members.includes(props.message.author.username) : false)
 const isAuthor = computed(() => props.message.author.username === user)
 const className = computed(() => isAuthor.value ? "msg__message--mine" : "")
+const msgBodyclassName = computed(() => isAuthor.value ? "msg__body--mine" : "")
+
 </script>
 
 <template>
     <div :class="['msg__message', className]">
         <MessageAuthor :author="message.author" :isOnline="isOnline" />
-        <div class="msg__body">
+        <div :class="['msg__body', msgBodyclassName]">
             <MessageText :text="message.text" :isAuthor="isAuthor" />
-            <MessageTime :createdAt="message.createdAt" :isAuthor="isAuthor" />
+            <MessageTime :createdAt="message.createdAt"/>
         </div>
     </div>
 </template>
@@ -39,6 +41,13 @@ const className = computed(() => isAuthor.value ? "msg__message--mine" : "")
 }
 
 .msg__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
     margin: 0 10px;
+
+    &--mine {
+        justify-content: right;
+    }
 }
 </style>

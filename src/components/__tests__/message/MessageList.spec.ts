@@ -13,7 +13,7 @@ describe("MessageList", () => {
         },
         type: "message",
         text: "hello",
-        createdAt: Date.now(),
+        createdAt: new Date().toString(),
       },
       {
         _id: "2",
@@ -22,7 +22,7 @@ describe("MessageList", () => {
         },
         type: "message",
         text: "hello",
-        createdAt: Date.now(),
+        createdAt: new Date().toString(),
       },
     ];
     const wrapper = mount(MessageList, {props: {messages}})

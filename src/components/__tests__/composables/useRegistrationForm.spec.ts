@@ -3,8 +3,10 @@ import { describe, expect, it } from 'vitest'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
 import { flushPromises } from '@vue/test-utils'
+import { setActivePinia, createPinia } from 'pinia'
 
 describe('useRegistrationForm', () => {
+  setActivePinia(createPinia())
   const mock = new MockAdapter(axios)
   it('changes values respectively', () => {
     mock.onGet().reply(200)

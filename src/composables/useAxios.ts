@@ -1,4 +1,5 @@
 import router from '@/router'
+import { useNotificationStore } from '@/stores/notification'
 import axios from 'axios'
 import { ref } from 'vue'
 
@@ -14,6 +15,8 @@ axios.interceptors.request.use(function (config) {
 export function useAxios() {
   const response = ref<any>(undefined)
   const isLoading = ref(false)
+  const { addNotification } = useNotificationStore()
+
   const makeApiCall = async (params: any) => {
     isLoading.value = true
     try {
@@ -21,8 +24,8 @@ export function useAxios() {
       response.value = result.data
     } catch (error: any) {
       if (!error.response) {
-        console.log('Сервер не отвечает')
-      } else if (error.response?.status === 401) {       
+        addNotification('Сервер не отвечает', 'warning')
+      } else if (error.response?.status === 401) {
         //if invalid credentials on login page
         if (error.response?.data?.message === 'Неверное имя пользователя или пароль') {
           response.value = { error: error.response?.data?.message }
@@ -35,9 +38,12 @@ export function useAxios() {
         //if username or chat room name is occupied
       } else if (error.response?.status === 409) {
         response.value = { status: 'failed' }
-        //any other error from server
+      } else if (error.response?.data?.message === 'Чат не найден') {
+        addNotification('Чат не найден', 'warning')
+        router.push('/')
       } else {
-        console.log('Ошибка на стороне сервера')
+        //any other error from server
+        addNotification('Ошибка на стороне сервера', 'warning')
       }
     } finally {
       isLoading.value = false

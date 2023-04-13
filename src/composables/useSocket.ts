@@ -1,5 +1,6 @@
 import type IRoom from '@/interfaces/IRoom'
 import router from '@/router'
+import { useNotificationStore } from '@/stores/notification'
 import { io, Socket } from 'socket.io-client'
 import type { Ref } from 'vue'
 
@@ -10,6 +11,8 @@ export function useSocket(
   messages: Ref<Array<any> | undefined>,
   members: Ref<Array<string> | undefined>
 ) {
+  const { addNotification } = useNotificationStore()
+
   socket.value = io('ws://localhost:3000')
   socket.value.io.on('reconnect', () => {
     socket.value!.emit('user-join', {
@@ -21,6 +24,9 @@ export function useSocket(
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     router.push('/enter')
+  })
+  socket.value.on('connect_error', () => {
+    addNotification('Нет связи с сервером', 'warning')
   })
   socket.value.on('welcome', (data) => {
     isLoading.value = false

@@ -3,10 +3,11 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
+import { setActivePinia, createPinia } from 'pinia'
 
 describe('SignupFormContainer', () => {
   const mock = new MockAdapter(axios)
-
+  setActivePinia(createPinia())
   it("changes button state depending on component's state", async () => {
     mock.onGet('http://localhost:3000/api/v1/users/name?name=test').reply(200)
     const wrapper = mount(SignupFormContainerVue)

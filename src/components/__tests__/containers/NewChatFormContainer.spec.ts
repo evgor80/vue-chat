@@ -3,10 +3,11 @@ import NewChatFormContainer from '@/containers/NewChatFormContainer.vue'
 import { flushPromises, mount } from '@vue/test-utils'
 import MockAdapter from 'axios-mock-adapter'
 import axios from 'axios'
+import { setActivePinia, createPinia } from 'pinia'
 
 describe('NewChatFormContainer', () => {
   const mock = new MockAdapter(axios)
-
+  setActivePinia(createPinia())
   it('renders only name field for public chat rooms', () => {
     const wrapper = mount(NewChatFormContainer)
     expect(wrapper.find("input[name='name']").exists()).toBeTruthy()

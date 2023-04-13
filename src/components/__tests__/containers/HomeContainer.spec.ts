@@ -4,6 +4,7 @@ import MockAdapter from 'axios-mock-adapter'
 import { describe, expect, it } from 'vitest'
 import HomeContainer from '@/containers/HomeContainer.vue'
 import router from '@/router'
+import { setActivePinia, createPinia } from 'pinia'
 
 const rooms = [
   {
@@ -35,7 +36,8 @@ const rooms = [
   }
 ]
 
-describe('MainContainer', () => {
+describe('HomeContainer', () => {
+  setActivePinia(createPinia())
   const mock = new MockAdapter(axios)
   mock.onGet('http://localhost:3000/api/v1/rooms').reply(200, { rooms })
 

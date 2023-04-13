@@ -12,7 +12,7 @@ describe('MessageItem', () => {
     },
     type: 'message',
     text: 'hello',
-    createdAt: Date.now()
+    createdAt: new Date().toString()
   }
   const leaveMessage: IInfoMessage = {
     _id: '1',

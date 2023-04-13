@@ -11,7 +11,7 @@ describe('MessageComponent', () => {
     },
     type: 'message',
     text: 'hello',
-    createdAt: Date.now()
+    createdAt: new Date().toString()
   }
   const wrapper = mount(MessageComponent, { props: { message } })
   it('displays message', () => {

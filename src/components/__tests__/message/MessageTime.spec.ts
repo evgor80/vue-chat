@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import MessageTime from '@/components/message/MessageTime.vue'
 
 describe('MessageTime', () => {
-  const createdAt = Date.now()
+  const createdAt = new Date().toString()
 
   it('displays time message was created in human-friendly format', () => {
     const wrapper = mount(MessageTime, { props: { createdAt, isAuthor: true } })

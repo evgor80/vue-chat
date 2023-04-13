@@ -5,5 +5,5 @@ export interface IMessage {
   }
   type: 'message'
   text: string
-  createdAt: number
+  createdAt: string
 }

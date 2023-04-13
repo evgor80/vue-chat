@@ -4,8 +4,8 @@ import EnterView from '@/views/EnterView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SignupView from '@/views/SignupView.vue'
 import NewChatView from '@/views/NewChatView.vue'
-import RoomView from '@/views/RoomView.vue'
 import type { RouteLocationNormalized } from 'vue-router'
+import { useLoadingStore } from '@/stores/loading'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,7 +38,7 @@ const router = createRouter({
     {
       path: '/room/:slug',
       name: 'room',
-      component: RoomView
+      component: () => import('@/views/RoomView.vue')
     }
   ]
 })
@@ -46,6 +46,18 @@ const router = createRouter({
 router.beforeEach((to: RouteLocationNormalized) => {
   if (!['/enter', '/login', '/signup'].includes(to.path) && !localStorage.token) {
     return { name: 'enter' }
+  }
+  if (to.path.includes('/room')) {
+    const { startLoading } = useLoadingStore()
+    startLoading()
+  }
+})
+
+router.afterEach((to: RouteLocationNormalized) => {
+  if (to.path.includes('/room')) {
+    const { stopLoading } = useLoadingStore()
+
+    stopLoading()
   }
 })
 

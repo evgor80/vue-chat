@@ -1,4 +1,4 @@
-export default function beautifyDate(date: number) {
+export default function beautifyDate(date: string) {
   if (!date) return "";
   const _date = new Date(date);
   const daydiff = Math.floor(

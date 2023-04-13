@@ -7,6 +7,7 @@ import FormInputContainer from "@/containers/FormInputContainer.vue"
 import FormSwitch from "@/components/form/FormSwitch.vue"
 import FormPasswordGeneratorButton from "@/components/form/FormPasswordGeneratorButton.vue"
 import { nameKey, passwordKey, confirmPasswordKey } from "@/keys"
+import { useNotificationStore } from '@/stores/notification';
 
 
 const isChecked = ref(false)
@@ -27,6 +28,9 @@ const {
     isLoading,
 } = useRegistrationForm("room");
 
+const { addNotification } = useNotificationStore()
+
+
 function handleChange() {
     isChecked.value = !isChecked.value;
 }
@@ -42,6 +46,7 @@ function handleSubmit() {
 watch(response, (r) => {
     if (r?.room) {
         router.push("/")
+        addNotification("Чат успешно создан", 'info')
     }
 })
 
